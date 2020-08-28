@@ -28,7 +28,7 @@ class FoodViewMainState extends State<FoodViewMain> {
           scrollDirection: Axis.horizontal,
           itemBuilder: (BuildContext context, int index) {
             return Card(
-                margin: EdgeInsets.symmetric(horizontal: 20),
+                margin: EdgeInsets.symmetric(horizontal: 15),
                 child: Container(
                   width: MediaQuery.of(context).size.width * 0.4,
                   child: Column(
