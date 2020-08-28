@@ -18,6 +18,15 @@ class FoodViewMainState extends State<FoodViewMain> {
   }
 
   AppBar appBarBuilder() => AppBar(
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.arrow_back),
+            alignment: Alignment.centerLeft,
+            onPressed: null,
+          ),
+          IconButton(icon: Icon(Icons.list), onPressed: null)
+        ],
       );
 }
