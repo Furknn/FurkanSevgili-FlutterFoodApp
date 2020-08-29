@@ -17,9 +17,32 @@ class FoodViewMainState extends State<FoodViewMain> {
 
   Column bodyColumnBuilder() {
     return Column(
-      children: [row1Builder(), row2Builder()],
+      children: [row1Builder(), row2Builder(), bottomColumn()],
     );
   }
+
+  Column bottomColumn() => Column(children: [row3Builder()]);
+
+  Row row3Builder() => Row(
+        children: [
+          Container(
+            margin: EdgeInsets.fromLTRB(30, 30, 0, 0),
+            height: MediaQuery.of(context).size.height * 0.075,
+            width: MediaQuery.of(context).size.width * 0.1,
+            color: Colors.red,
+            child: Icon(
+              Icons.favorite,
+              color: Colors.white,
+            ),
+          ),
+          Container(
+              margin: EdgeInsets.symmetric(horizontal: 15),
+              child: Text(
+                "Popular",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ))
+        ],
+      );
 
   SizedBox row2Builder() => SizedBox(
         height: MediaQuery.of(context).size.height * 0.3,
@@ -28,7 +51,7 @@ class FoodViewMainState extends State<FoodViewMain> {
           scrollDirection: Axis.horizontal,
           itemBuilder: (BuildContext context, int index) {
             return Card(
-                margin: EdgeInsets.symmetric(horizontal: 15),
+                margin: EdgeInsets.fromLTRB(15, 15, 15, 0),
                 child: Container(
                   width: MediaQuery.of(context).size.width * 0.4,
                   child: Column(
@@ -51,8 +74,10 @@ class FoodViewMainState extends State<FoodViewMain> {
         children: [
           Container(
             child: Text(
-              "What do you want to eat today ?",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+              "What do you want to \neat today ?",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              maxLines: 2,
+              overflow: TextOverflow.visible,
             ),
           ),
           IconButton(onPressed: null, icon: Icon(Icons.search))
