@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class FoodViewMain extends StatefulWidget {
   FoodViewMain({Key key}) : super(key: key);
@@ -26,13 +27,15 @@ class FoodViewMainState extends State<FoodViewMain> {
 
   SizedBox bottomListBuilder() {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.3,
+      height: MediaQuery.of(context).size.height * 0.38,
       child: ListView.builder(
-        itemCount: 20,
+        itemCount: 10,
         itemBuilder: (BuildContext context, int index) {
           return Card(
             child: ListTile(
               isThreeLine: false,
+              title: Text("Item " + index.toString()),
+              subtitle: Text("data"),
               leading: Container(
                 height: MediaQuery.of(context).size.height * 0.05,
                 width: MediaQuery.of(context).size.width * 0.1,
@@ -70,7 +73,7 @@ class FoodViewMainState extends State<FoodViewMain> {
   SizedBox row2Builder() => SizedBox(
         height: MediaQuery.of(context).size.height * 0.3,
         child: ListView.builder(
-          itemCount: 20,
+          itemCount: 10,
           scrollDirection: Axis.horizontal,
           itemBuilder: (BuildContext context, int index) {
             return Card(
@@ -93,9 +96,10 @@ class FoodViewMainState extends State<FoodViewMain> {
       );
 
   Row row1Builder() => Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
+            margin: EdgeInsets.fromLTRB(10, 10, 0, 0),
             child: Text(
               "What do you want to \neat today ?",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
@@ -103,7 +107,9 @@ class FoodViewMainState extends State<FoodViewMain> {
               overflow: TextOverflow.visible,
             ),
           ),
-          IconButton(onPressed: null, icon: Icon(Icons.search))
+          Container(
+              margin: EdgeInsets.fromLTRB(0, 10, 10, 0),
+              child: IconButton(onPressed: null, icon: Icon(Icons.search)))
         ],
       );
 
@@ -111,8 +117,8 @@ class FoodViewMainState extends State<FoodViewMain> {
           backgroundColor: Colors.transparent,
           elevation: 0,
           leading: IconButton(
-            icon: Icon(Icons.arrow_back),
-            onPressed: null,
+            icon: Icon(Icons.arrow_back, color: Colors.grey),
+            onPressed: () => SystemNavigator.pop(),
           ),
           actions: [
             Container(
@@ -122,7 +128,9 @@ class FoodViewMainState extends State<FoodViewMain> {
                   Transform.rotate(
                       angle: pi,
                       child: IconButton(
-                          icon: Icon(Icons.short_text), onPressed: null))
+                        icon: Icon(Icons.short_text, color: Colors.grey),
+                        onPressed: null,
+                      ))
                 ],
               ),
             )
